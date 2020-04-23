@@ -70,7 +70,19 @@ DS record
 
 # Background
 
-This is some background text
+To enable the signaling of DoT a new DNSKEY algorithm type [X] is added.
+If a recursor encounters a DS record with the DNSKEY algorithm type [X] it MUST connect to the authoritative servers for this domain via DoT if it supports it.
+It should use the hashes attached to the DS records with DNSKEY algorithm type [X] to check whether the public key supplied by the authoritative nameserver is valid.
+If DoT connection is unsuccessful or the public key supplied the server does not match one of the DS digests name resolution should fail.
+
+The pseudo DNSKEY record MUST contain DER encoded SubjectPublicKeyInfo as defined in RFC5280 4.1.2.7.
+Since the cert provided by the TLS server over the wire is already DER encoded this makes for easy validation.
+The pseudo DNSKEY algorithm type [X] is algorithm agnostic, like the TLSA record, since the DER encoded data already contains information about the used algorithm.
+Algorithm support SHOULD be handled at the TLS handshake level, which means a DNS application SHOULD NOT need to be aware of the algorithm used outside its SSL library.
+The pseudo DNSKEY record MUST NOT be present in the zone.
+The procedure for hashing the pseudo DNSKEY record is the same as for a normal DNSKEY as defined in RFC4034.
+
+The pseudo DNSKEY type can be used in CDNSKEY and CDS, as defined in RFC7344, records as well. These MAY be present in the zone.
 
 # Use Cases {#usecases}
 
@@ -111,3 +123,4 @@ various use cases.
 This document has no IANA actions.
 
 {backmatter}
+
