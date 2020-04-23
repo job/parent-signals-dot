@@ -35,9 +35,9 @@ surname = "Geuze"
 fullname = "Robin Geuze"
 organization = "TransIP"
 [author.address]
- email = "robinFIXME@transip.nl"
+ email = "robing@transip.nl"
 [author.address.postal]
- city = "FIXME"
+ city = "Delft"
  country = "Netherlands"
 
 %%%
