@@ -79,7 +79,7 @@ If a resolver with support for TBD encounters a DS record with the DNSKEY algori
 It MUST use the hashes attached to the DS records with DNSKEY algorithm type TBD to check whether the public key supplied by the authoritative nameserver is valid.
 If DoT connection is unsuccessful or the public key supplied the server does not match one of the DS digests, the resolver MUST NOT fall back to unencrypted Do53.
 
-The pseudo DNSKEY record MUST contain DER encoded SubjectPublicKeyInfo as defined in RFC5280 4.1.2.7.
+The pseudo DNSKEY record MUST contain DER encoded SubjectPublicKeyInfo as defined in [@!RFC5280] 4.1.2.7.
 Since the cert provided by the TLS server over the wire is already DER encoded this makes for easy validation.
 The pseudo DNSKEY algorithm type TBD is algorithm agnostic, like the TLSA record, since the DER encoded data already contains information about the used algorithm.
 Algorithm support SHOULD be handled at the TLS handshake level, which means a DNS application SHOULD NOT need to be aware of the algorithm used by its TLS library.
@@ -117,6 +117,15 @@ Some Proof of Concept code showing the generation of the (C)DNSKEY, and the subs
 # IANA Considerations
 
 [TODO: boilerplate about requesting TBD assignment]
+
+# Acknowledgements
+
+This document would not have been possible without the tremendous inspiration Manu Bretelle gave us at IETF104.
+Further great input was received from
+Petr Spacek,
+Ralph Dolmans,
+and Vladimir Cunat.
+
 
 {backmatter}
 
