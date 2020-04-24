@@ -60,6 +60,8 @@ This document introduces a way to signal, from the parent side of a delegation, 
 This proposal does not require any changes in authoritative name servers (other than, possibly through an external process), actually offering DoT on port 853 (@!RFC7858).
 DNS registry operators (such as TLD operators) also need to make no changes, unless they filter uploaded DNSKEY/DS records on acceptable DNSKEY algorithms, in which case they would need to add algorithm TBD to that list.
 
+This document was inspired by, and borrows heavily from, [@!I-D.bretelle-dprive-dot-for-insecure-delegations].
+
 # Conventions and Definitions
 
 The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD",
